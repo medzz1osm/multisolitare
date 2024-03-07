@@ -1,51 +1,20 @@
-"""
-Solitaire clone.
-"""
 import arcade
 
-# Screen title and size
-SCREEN_WIDTH = 1024
-SCREEN_HEIGHT = 768
-SCREEN_TITLE = "Multi-Solitare"
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+SCREEN_TITLE = "Multi solitare"
 
-
-class MyGame(arcade.Window):
-    """ Main application class. """
-
-    def __init__(self):
-        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
-
-        arcade.set_background_color(arcade.color.AMAZON)
-
-    def setup(self):
-        """ Set up the game here. Call this function to restart the game. """
-        pass
+class MultiSolitare(arcade.Window):
+    def __init__(self, width, height, title):
+        super().__init__(width, height, title)
+        arcade.set_background_color(arcade.color.GREEN)
 
     def on_draw(self):
-        """ Render the screen. """
-        # Clear the screen
-        self.clear()
-
-    def on_mouse_press(self, x, y, button, key_modifiers):
-        """ Called when the user presses a mouse button. """
-        pass
-
-    def on_mouse_release(self, x: float, y: float, button: int,
-                         modifiers: int):
-        """ Called when the user presses a mouse button. """
-        pass
-
-    def on_mouse_motion(self, x: float, y: float, dx: float, dy: float):
-        """ User moves mouse """
-        pass
-
+        arcade.start_render()
 
 def main():
-    """ Main function """
-    window = MyGame()
-    window.setup()
+    game = MultiSolitare(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
     arcade.run()
-
 
 if __name__ == "__main__":
     main()
