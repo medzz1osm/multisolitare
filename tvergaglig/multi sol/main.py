@@ -7,7 +7,7 @@ SCREEN_TITLE = "Multi solitare"
 class MultiSolitare(arcade.Window):
     def __init__(self, width, height, title):
         super().__init__(width, height, title)
-        arcade.set_background_color(arcade.color.GO_GREEN)
+        arcade.set_background_color(arcade.color.GREEN)
 
     def on_draw(self):
         arcade.start_render()
@@ -33,7 +33,7 @@ class MyGame(arcade.Window):
 
     def __init__(self):
         super().__init__(800, 600, "Display Card Example")
-      
+        arcade.set_background_color(arcade.color.WHITE)
 
         # Load card images
         self.card_image = arcade.load_texture("2_of_Diamonds.png")
