@@ -1,54 +1,67 @@
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Hello from Flask"
+
+if __name__== '__main__':
+    app.run(debug=True)
+
 import arcade
 
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
-SCREEN_TITLE = "Multi solitare"
-
-class MultiSolitare(arcade.Window):
-    def __init__(self, width, height, title):
-        super().__init__(width, height, title)
-        arcade.set_background_color(arcade.color.GO_GREEN)
-
-    def on_draw(self):
-        arcade.start_render()
-
-def main():
-    game = MultiSolitare(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
-    arcade.run()
-
-if __name__ == "__main__":
-    main()
-
-
-# cards 
-
-# Load card images
-card_images = {}
-suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
-ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
+# Screen title and size
+SCREEN_WIDTH = 1024
+SCREEN_HEIGHT = 768
+SCREEN_TITLE = "Drag and Drop Cards"
 
 
 class MyGame(arcade.Window):
     """ Main application class. """
 
     def __init__(self):
-        super().__init__(800, 600, "Display Card Example")
-      
+        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
 
-        # Load card images
-        self.card_image = arcade.load_texture("2_of_Diamonds.png")
+        arcade.set_background_color(arcade.color.AMAZON)
+
+    def setup(self):
+        """ Set up the game here. Call this function to restart the game. """
+        pass
 
     def on_draw(self):
         """ Render the screen. """
-        arcade.start_render()
+        # Clear the screen
+        self.clear()
 
-        # Display the card image
-        arcade.draw_texture_rectangle(400, 300, self.card_image.width, self.card_image.height, self.card_image)
+        # Draw a rectangle
+        arcade.draw_rectangle_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
+                                     200, 100, arcade.color.RED)
+
+        # Draw text
+        arcade.draw_text("Hello, Arcade!", SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
+                         arcade.color.WHITE, font_size=24, anchor_x="center")
+
+    def on_mouse_press(self, x, y, button, key_modifiers):
+        """ Called when the user presses a mouse button. """
+        pass
+
+    def on_mouse_release(self, x: float, y: float, button: int,
+                         modifiers: int):
+        """ Called when the user presses a mouse button. """
+        pass
+
+    def on_mouse_motion(self, x: float, y: float, dx: float, dy: float):
+        """ User moves mouse """
+        pass
+
 
 def main():
     """ Main function """
     window = MyGame()
+    window.setup()
     arcade.run()
+
 
 if __name__ == "__main__":
     main()
