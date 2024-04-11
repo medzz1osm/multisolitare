@@ -87,3 +87,38 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    def __init__(self):
+        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+
+        # Sprite list with all the cards, no matter what pile they are in.
+        self.card_list = None
+
+        arcade.set_background_color(arcade.color.AMAZON)
+
+        # List of cards we are dragging with the mouse
+        self.held_cards = None
+
+        # Original location of cards we are dragging with the mouse in case
+        # they have to go back.
+        self.held_cards_original_position = None
+
+    def setup(self):
+        """ Set up the game here. Call this function to restart the game. """
+
+        # List of cards we are dragging with the mouse
+        self.held_cards = []
+
+        # Original location of cards we are dragging with the mouse in case
+        # they have to go back.
+        self.held_cards_original_position = []
+
+        # Sprite list with all the cards, no matter what pile they are in.
+        self.card_list = arcade.SpriteList()
+
+        # Create every card
+        for card_suit in CARD_SUITS:
+            for card_value in CARD_VALUES:
+                card = Card(card_suit, card_value, CARD_SCALE)
+                card.position = START_X, BOTTOM_Y
+                self.card_list.append(card)
